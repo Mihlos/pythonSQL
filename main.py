@@ -71,6 +71,7 @@ class DataBase:
         (119,'La Rochelle Gifts','Labrune','Janine ','40.67.8555','67, rue des Cinquante Otages',NULL,'Nantes',NULL,'44000','France',1370,'118200.00');
         '''
         self.cursor.execute(sqlQuery)
+        self.cursor.connection.commit()
 
     def selectCustomers(self):
         sqlQuery= 'SELECT * FROM customers'
@@ -80,10 +81,10 @@ class DataBase:
 
 myfreedb= DataBase()
 myfreedb.showDB()
-myfreedb.createEmployeeTable()
-myfreedb.createCustomersTable()
+#myfreedb.createEmployeeTable()
+#myfreedb.createCustomersTable()
 myfreedb.showTables()
-myfreedb.insertCustomers()
+#myfreedb.insertCustomers()
 customers= myfreedb.selectCustomers()
 print(customers)
 print('Name: {}'.format(customers[0][1]))
