@@ -1,12 +1,20 @@
 import pymysql
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+HOST = os.getenv('HOST')
+LOG = os.getenv('LOG')
+PASSWORD = os.getenv('PASSWORD')
+DB = os.getenv('DB')
 
 class DataBase:
     def __init__(self):
         self.connection = pymysql.connect(
-            host='sql2.freesqldatabase.com',
-            user='sql2293245',
-            password='pX4!eJ8%',
-            db='sql2293245'
+            host = HOST,
+            user = LOG,
+            password = PASSWORD,
+            db = DB
         )
         self.cursor = self.connection.cursor()   
         print('Conexion establecida.') 
@@ -72,8 +80,8 @@ class DataBase:
 
 myfreedb= DataBase()
 myfreedb.showDB()
-#myfreedb.createEmployeeTable()
-#myfreedb.createCustomersTable()
+myfreedb.createEmployeeTable()
+myfreedb.createCustomersTable()
 myfreedb.showTables()
 myfreedb.insertCustomers()
 customers= myfreedb.selectCustomers()
